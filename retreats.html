@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Retreats — Women Of the World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #018EA2;
+    --teal-deep: #016574;
+    --teal-soft: #E6F3F5;
+    --yellow: #FAD108;
+    --yellow-soft: #FDF1A3;
+    --black: #231F20;
+    --warm-gold: #E8C77A;
+    --peach: #E8A586;
+    --white: #FFFFFF;
+    --grey-100: #F6F5F2;
+    --grey-300: #D8D4CD;
+    --grey-600: #6B6660;
+
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Fraunces', Georgia, serif;
+
+    --max: 1280px;
+    --gutter: clamp(20px, 4vw, 56px);
+    --pad-section: clamp(64px, 10vw, 140px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.55;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ─── Logo ─── */
+  .logo {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    line-height: 0.92;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .logo .stack { display: flex; flex-direction: column; }
+  .logo .y { color: var(--yellow); }
+  .logo .w { color: var(--white); }
+  .logo--dark .w { color: var(--black); }
+
+  /* ─── Top nav ─── */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+    border-bottom: 1px solid rgba(35, 31, 32, 0.06);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+    font-size: 14.5px; font-weight: 500; letter-spacing: 0.01em;
+  }
+  .nav-links a {
+    position: relative; padding: 6px 0;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+  .nav-links a.active::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 1.5px; background: var(--teal);
+    transform: scaleX(1); transform-origin: left;
+  }
+  .nav-links a:not(.active)::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 1.5px; background: var(--teal);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:not(.active):hover::after { transform: scaleX(1); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 22px; border-radius: 999px;
+    font-family: var(--font-sans); font-weight: 600;
+    font-size: 14.5px; letter-spacing: 0.01em;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-yellow { background: var(--yellow); color: var(--black); }
+  .btn-yellow:hover { background: #ffdb1f; }
+  /* btn-yellow kept for accent use */
+  .btn-teal { background: var(--teal); color: var(--white); }
+  .btn-teal:hover { background: var(--teal-deep); }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.5);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+  .btn-outline {
+    background: transparent; color: var(--black);
+    border: 1.5px solid var(--black);
+  }
+  .btn-outline:hover { background: var(--black); color: var(--white); }
+  .btn-arrow::after { content: '→'; font-size: 16px; }
+
+  .hamburger {
+    display: none; width: 36px; height: 36px;
+    align-items: center; justify-content: center;
+    border-radius: 8px;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 1.8px;
+    background: var(--black); position: relative;
+  }
+  .hamburger span::before, .hamburger span::after {
+    content: ''; position: absolute; left: 0;
+    width: 22px; height: 1.8px; background: var(--black);
+  }
+  .hamburger span::before { top: -7px; }
+  .hamburger span::after { top: 7px; }
+
+  /* ─── Page hero ─── */
+  .page-hero {
+    background: var(--teal); color: var(--white);
+    position: relative; overflow: hidden;
+    padding: clamp(72px, 10vw, 120px) 0 clamp(72px, 10vw, 120px);
+  }
+  .page-hero::before {
+    content: ''; position: absolute;
+    top: -10%; right: -10%;
+    width: 60%; height: 80%;
+    background: radial-gradient(circle, var(--yellow) 0%, transparent 60%);
+    opacity: 0.4; filter: blur(40px);
+  }
+  .page-hero-inner { position: relative; z-index: 1; max-width: 920px; }
+  .breadcrumb {
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    opacity: 0.85; margin-bottom: 28px;
+  }
+  .breadcrumb a:hover { color: var(--yellow); }
+  .breadcrumb .sep { margin: 0 10px; opacity: 0.5; }
+  .page-hero h1 {
+    font-weight: 800; font-size: clamp(46px, 7.5vw, 100px);
+    line-height: 0.96; letter-spacing: -0.025em;
+    margin-bottom: 24px;
+  }
+  .page-hero h1 em {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 400; color: var(--yellow);
+  }
+  .page-hero-sub {
+    font-size: clamp(17px, 1.6vw, 22px);
+    max-width: 700px; opacity: 0.95; line-height: 1.55;
+  }
+  .page-hero-sub + .page-hero-sub { margin-top: 14px; opacity: 0.85; font-size: clamp(15px, 1.3vw, 18px); }
+
+  /* ─── Pillars ─── */
+  .pillars { padding: clamp(64px, 9vw, 110px) 0; background: var(--white); }
+  .pillars-head { max-width: 880px; margin-bottom: 56px; }
+  .pillars-head .label {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 14px; display: block;
+  }
+  .pillars-head h2 {
+    font-weight: 800; font-size: clamp(32px, 4.5vw, 56px);
+    line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .pillars-head h2 em {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 400; color: var(--teal);
+  }
+  .pillars-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+  }
+  .pillar {
+    background: var(--grey-100); padding: 28px 24px;
+    border-radius: 18px;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .pillar:hover { background: var(--teal-soft); transform: translateY(-3px); }
+  .pillar .num {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 18px; color: var(--teal); margin-bottom: 10px;
+  }
+  .pillar p { font-size: 15px; line-height: 1.55; }
+
+  .pillars-quote {
+    margin-top: 56px;
+    padding: 36px 0 0;
+    border-top: 1px solid rgba(35,31,32,0.1);
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(20px, 2.4vw, 30px);
+    line-height: 1.3; letter-spacing: -0.01em;
+    max-width: 880px;
+  }
+  .pillars-quote .accent { color: var(--teal); }
+
+  /* ─── Retreat features ─── */
+  .retreat-feature {
+    padding: clamp(72px, 10vw, 130px) 0;
+    border-top: 1px solid rgba(35, 31, 32, 0.08);
+  }
+  .retreat-feature:nth-of-type(odd) { background: var(--grey-100); }
+
+  .feature-top {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px); align-items: center;
+    margin-bottom: 64px;
+  }
+  .feature-top.flipped .feature-visual { order: 2; }
+
+  .feature-visual {
+    aspect-ratio: 4/5; border-radius: 24px;
+    overflow: hidden; position: relative;
+    color: var(--white);
+    display: flex; align-items: flex-end; padding: 32px;
+  }
+  .feature-visual::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55) 100%);
+  }
+  .feature-visual.england { background: linear-gradient(135deg, #2a5560 0%, var(--teal-deep) 60%, #1a3942 100%); }
+  .feature-visual.komodo { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-deep) 50%, #014b58 100%); }
+  .feature-visual.palawan { background: linear-gradient(135deg, var(--teal) 0%, #0a98a9 50%, #e8a586 100%); }
+
+  .visual-tag {
+    position: absolute; top: 28px; left: 28px;
+    padding: 7px 16px;
+    background: rgba(255,255,255,0.95); color: var(--black);
+    border-radius: 999px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .visual-status {
+    position: absolute; top: 28px; right: 28px;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.95); color: var(--black);
+    border-radius: 999px; font-size: 11.5px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .visual-caption {
+    position: relative; z-index: 1;
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 17px; opacity: 0.95; line-height: 1.4;
+  }
+  .visual-placeholder {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 110px; opacity: 0.18; line-height: 1;
+  }
+
+  .feature-eyebrow {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 14px;
+  }
+  .feature-title {
+    font-weight: 800; font-size: clamp(36px, 4.8vw, 60px);
+    line-height: 1.02; letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .feature-title em {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 400; color: var(--teal);
+  }
+  .feature-when {
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+    font-size: 15px; color: var(--grey-600);
+    margin-bottom: 26px; font-weight: 500;
+  }
+  .feature-when span { display: inline-flex; align-items: center; gap: 8px; }
+  .feature-when span::before {
+    content: '·'; color: var(--teal); font-weight: 700;
+  }
+  .feature-when span:first-child::before { display: none; }
+  .feature-lede {
+    font-size: 17px; line-height: 1.65;
+    color: var(--black);
+  }
+
+  /* feature body sections */
+  .feature-body {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 40px; margin-bottom: 56px;
+  }
+  .feature-body h3 {
+    font-size: 12.5px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 12px;
+  }
+  .feature-body p { font-size: 15.5px; line-height: 1.65; color: var(--grey-600); }
+  .feature-body p + p { margin-top: 12px; }
+
+  /* Flow timeline */
+  .feature-flow {
+    background: var(--white); border-radius: 24px; padding: 40px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(35,31,32,0.08);
+  }
+  .flow-day { border-left: 2px solid var(--teal); padding-left: 18px; }
+  .retreat-feature:nth-of-type(odd) .feature-flow {
+    background: var(--white);
+  }
+  .feature-flow h3 {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 28px;
+  }
+  .flow-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .flow-day-old {
+    padding-left: 18px;
+  }
+  .flow-day h4 {
+    font-size: 16px; font-weight: 700;
+    letter-spacing: -0.01em; margin-bottom: 4px;
+  }
+  .flow-day .flow-date {
+    font-size: 12.5px; color: var(--grey-600);
+    margin-bottom: 14px; font-weight: 500;
+  }
+  .flow-day ul { list-style: none; }
+  .flow-day li {
+    font-size: 13.5px; line-height: 1.5;
+    padding: 5px 0; color: var(--black);
+  }
+  .flow-note {
+    margin-top: 24px; padding-top: 18px;
+    border-top: 1px solid rgba(35,31,32,0.08);
+    font-size: 13px; color: var(--grey-600); font-style: italic;
+  }
+
+  /* Includes + investment side by side */
+  .feature-package {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 24px; margin-bottom: 32px;
+  }
+  .pkg-card {
+    background: var(--white); border-radius: 20px;
+    padding: 36px 32px;
+    border: 1px solid rgba(35,31,32,0.08);
+  }
+  .pkg-card h3 {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 18px;
+  }
+  .pkg-card ul { list-style: none; }
+  .pkg-card li {
+    font-size: 15px; padding: 8px 0 8px 22px;
+    position: relative; line-height: 1.5;
+    border-bottom: 1px solid rgba(35,31,32,0.06);
+  }
+  .pkg-card li:last-child { border-bottom: none; }
+  .pkg-card li::before {
+    content: '◆'; position: absolute; left: 0; top: 11px;
+    color: var(--teal); font-size: 9px;
+  }
+  .pkg-card.invest ul li::before { content: ''; }
+  .pkg-card.invest ul li { padding-left: 0; }
+  .pkg-card.invest .price {
+    font-weight: 700; font-size: 22px;
+    letter-spacing: -0.01em; color: var(--black);
+    display: block; margin-bottom: 4px;
+  }
+  .pkg-card.invest .price-label {
+    font-size: 13px; color: var(--grey-600); font-weight: 500;
+  }
+  .pkg-card.invest .offer {
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid rgba(35,31,32,0.06);
+  }
+  .pkg-card.invest .offer-tag {
+    display: inline-block; padding: 4px 10px;
+    background: var(--teal); color: var(--white);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    border-radius: 999px; margin-bottom: 8px;
+  }
+  .pkg-card.invest .offer p {
+    font-size: 13.5px; color: var(--grey-600); line-height: 1.5;
+  }
+
+  /* Details strip */
+  .feature-details-strip {
+    background: var(--black); color: var(--white);
+    border-radius: 20px; padding: 32px 36px;
+    margin-bottom: 32px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .feature-details-strip .detail h5 {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--teal-soft); margin-bottom: 6px;
+  }
+  .feature-details-strip .detail p {
+    font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,0.85);
+  }
+
+  .feature-cta {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    align-items: center;
+  }
+
+  /* ─── Past retreats ─── */
+  .past {
+    background: var(--black); color: var(--white);
+    padding: var(--pad-section) 0;
+    position: relative; overflow: hidden;
+  }
+  .past::before {
+    content: ''; position: absolute;
+    top: 0; right: -10%; width: 50%; height: 80%;
+    background: radial-gradient(circle, var(--yellow) 0%, transparent 60%);
+    opacity: 0.18; filter: blur(60px);
+  }
+  .past-head { max-width: 760px; margin-bottom: 56px; position: relative; z-index: 1; }
+  .past-head .label {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal-soft); margin-bottom: 14px; display: block;
+  }
+  .past-head h2 {
+    font-weight: 800; font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .past-head h2 em {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 400; color: var(--teal-soft);
+  }
+
+  .past-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; position: relative; z-index: 1;
+  }
+  .past-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 32px 28px;
+  }
+  .past-card .where {
+    font-size: 12.5px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--teal-soft); margin-bottom: 4px;
+  }
+  .past-card .when {
+    font-size: 13.5px; color: rgba(255,255,255,0.7);
+    margin-bottom: 22px;
+  }
+  .past-quote {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 17px; line-height: 1.5; margin-bottom: 18px;
+  }
+  .past-quote + .past-quote {
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .past-cite {
+    font-style: normal; font-size: 13px; font-weight: 600;
+    color: var(--teal-soft); letter-spacing: 0.04em;
+  }
+
+  /* ─── Fit / who is this for ─── */
+  .fit {
+    background: var(--white); padding: var(--pad-section) 0;
+  }
+  .fit-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: clamp(40px, 6vw, 80px); align-items: start;
+  }
+  .fit-grid .label {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); display: block; margin-bottom: 14px;
+  }
+  .fit-grid h2 {
+    font-weight: 800; font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .fit-grid h2 em {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 400; color: var(--teal);
+  }
+  .fit-grid p {
+    font-size: clamp(16px, 1.3vw, 19px);
+    color: var(--grey-600); line-height: 1.65;
+  }
+  .fit-grid p + p { margin-top: 16px; }
+
+  /* ─── Virtual programmes teaser ─── */
+  .virtual-teaser {
+    background: var(--teal); color: var(--white);
+    padding: var(--pad-section) 0;
+    position: relative; overflow: hidden;
+  }
+  .virtual-teaser::before {
+    content: ''; position: absolute;
+    bottom: -20%; left: -10%; width: 50%; height: 80%;
+    background: radial-gradient(circle, var(--yellow) 0%, transparent 60%);
+    opacity: 0.3; filter: blur(60px);
+  }
+  .virtual-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: clamp(40px, 6vw, 80px); align-items: center;
+    position: relative; z-index: 1;
+  }
+  .virtual-grid .label {
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal-soft); display: block; margin-bottom: 14px;
+  }
+  .virtual-grid h2 {
+    font-weight: 800; font-size: clamp(34px, 4.8vw, 56px);
+    line-height: 1.02; letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+  .virtual-grid h2 em {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 400; color: var(--teal-soft);
+  }
+  .virtual-grid p {
+    font-size: 17px; line-height: 1.6;
+    opacity: 0.92; margin-bottom: 18px;
+  }
+  .virtual-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 24px; padding: 36px;
+    backdrop-filter: blur(8px);
+  }
+  .virtual-card h4 {
+    font-size: 15px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--teal-soft); margin-bottom: 22px;
+  }
+  .virtual-card .price-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .virtual-card .price-row:last-of-type { border-bottom: none; }
+  .virtual-card .price-row .label-sm {
+    font-size: 14px; opacity: 0.85;
+  }
+  .virtual-card .price-row .val {
+    font-weight: 700; font-size: 18px;
+  }
+  .virtual-card .cta-row { margin-top: 24px; }
+
+  /* ─── CTA band ─── */
+  .cta-band {
+    background: var(--teal); color: var(--white);
+    padding: clamp(72px, 10vw, 120px) 0;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(1,73,86,0.4) 0%, transparent 60%);
+  }
+  .cta-band > .wrap { position: relative; z-index: 1; }
+  .cta-band h2 {
+    font-weight: 800; font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.02; letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+  .cta-band h2 em {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 400; color: var(--teal-soft);
+  }
+  .cta-band p {
+    font-size: 18px; max-width: 620px; margin: 0 auto 36px;
+    opacity: 0.9; line-height: 1.55;
+  }
+  .cta-band .btn-row {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* ─── Footer ─── */
+  footer {
+    background: var(--black); color: var(--white);
+    padding: 72px 0 40px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 56px;
+  }
+  .footer-brand p {
+    margin-top: 20px; opacity: 0.7; font-size: 14.5px;
+    max-width: 320px; line-height: 1.6;
+  }
+  .footer-col h5 {
+    font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--teal-soft);
+    margin-bottom: 18px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a {
+    font-size: 14.5px; opacity: 0.78;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+  .footer-col a:hover { opacity: 1; color: var(--teal-soft); }
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: rgba(255,255,255,0.55);
+  }
+  .footer-bottom a:hover { color: var(--teal-soft); }
+
+  /* anchor offset for sticky nav */
+  section[id] { scroll-margin-top: 80px; }
+
+  /* ─── Mobile menu ─── */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0;
+    background: var(--black); color: var(--white);
+    z-index: 100; padding: 80px var(--gutter) 40px;
+  }
+  .mobile-menu.open { display: flex; flex-direction: column; }
+  .mobile-menu ul { list-style: none; }
+  .mobile-menu li { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .mobile-menu a { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+  .mobile-close {
+    position: absolute; top: 20px; right: var(--gutter);
+    width: 40px; height: 40px; color: var(--white);
+    font-size: 28px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .pillars-grid { grid-template-columns: repeat(3, 1fr); }
+    .flow-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 980px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-cta-desktop { display: none; }
+    .feature-top, .fit-grid, .virtual-grid, .feature-body { grid-template-columns: 1fr; }
+    .feature-top.flipped .feature-visual { order: 0; }
+    .feature-package { grid-template-columns: 1fr; }
+    .feature-details-strip { grid-template-columns: 1fr; gap: 18px; padding: 28px; }
+    .past-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 640px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+    .flow-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────── NAV ───────── -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo logo--dark" aria-label="Women Of the World">
+      <span class="stack">
+        <span><span class="y">W</span>omen</span>
+        <span><span class="y">O</span>f the</span>
+        <span><span class="y">W</span>orld</span>
+      </span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#programmes">Programmes</a></li>
+        <li><a href="index.html#masterclasses">Masterclasses</a></li>
+        <li><a href="retreats.html" class="active">Retreats</a></li>
+        <li><a href="index.html#events">Events</a></li>
+        <li><a href="index.html#coaches">Coaches</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+      </ul>
+    </nav>
+    <a href="https://bit.ly/WOWTaster" target="_blank" rel="noopener" class="btn btn-teal nav-cta-desktop">Free taster session</a>
+    <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">×</button>
+  <ul onclick="document.getElementById('mobileMenu').classList.remove('open')">
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#programmes">Programmes</a></li>
+    <li><a href="index.html#masterclasses">Masterclasses</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="index.html#events">Events</a></li>
+    <li><a href="index.html#coaches">Coaches</a></li>
+    <li><a href="index.html#testimonials">Testimonials</a></li>
+    <li><a href="index.html#apply">Apply</a></li>
+  </ul>
+</div>
+
+<!-- ───────── PAGE HERO ───────── -->
+<section class="page-hero">
+  <div class="wrap page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html#home">Home</a>
+      <span class="sep">·</span>
+      <span>Retreats</span>
+    </div>
+    <h1>A purposeful <em>pause,</em><br>redesigned.</h1>
+    <p class="page-hero-sub">
+      WOW Retreats are immersive experiences created for women seeking clarity,
+      connection, and direction. Set in carefully chosen locations around the
+      world, each retreat is designed as a strategic pause &mdash; a space to
+      step away from daily demands and reconnect with what matters most.
+    </p>
+    <p class="page-hero-sub">
+      Through coaching, guided conversations, and shared experiences in nature,
+      WOW Retreats support reflection, insight, and meaningful personal growth.
+      Every retreat is intentionally small, deeply considered, and led by
+      experienced WOW coaches.
+    </p>
+  </div>
+</section>
+
+<!-- ───────── PILLARS / WHAT MAKES A WOW RETREAT ───────── -->
+<section class="pillars">
+  <div class="wrap">
+    <div class="pillars-head">
+      <span class="label">What makes a WOW Retreat</span>
+      <h2>Designed for <em>depth,</em><br>not distraction.</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="num">01</div>
+        <p>Purpose-led locations chosen for space, calm, and perspective.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">02</div>
+        <p>Professionally facilitated coaching and group sessions.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">03</div>
+        <p>Time for reflection, conversation, and quiet integration.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">04</div>
+        <p>A supportive circle of women who continue beyond the retreat.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">05</div>
+        <p>Experiences designed to encourage depth, not distraction.</p>
+      </div>
+    </div>
+    <p class="pillars-quote">
+      Each WOW Retreat is different &mdash; shaped by its place &mdash; but guided by the
+      same intention: <span class="accent">to create space where clarity can emerge.</span>
+      This is not about escaping life. It's about returning to it with perspective.
+    </p>
+  </div>
+</section>
+
+<!-- ───────── HEREFORDSHIRE ───────── -->
+<section class="retreat-feature" id="england">
+  <div class="wrap">
+    <div class="feature-top">
+      <div class="feature-visual england">
+        <span class="visual-tag">England</span>
+        <span class="visual-status">Upcoming</span>
+        <span class="visual-placeholder">E</span>
+        <p class="visual-caption">Herefordshire's gentle landscapes &mdash; presence over performance.</p>
+      </div>
+      <div>
+        <p class="feature-eyebrow">Retreat 01 · Upcoming</p>
+        <h2 class="feature-title">Herefordshire, <em>England.</em></h2>
+        <div class="feature-when">
+          <span>May 29 &ndash; June 1, 2026</span>
+          <span>4 days, 3 nights</span>
+          <span>Shucknall Court</span>
+        </div>
+        <p class="feature-lede">
+          Set in the English countryside, this retreat is a return to where WOW
+          Coaching was first conceived. Herefordshire's gentle landscapes,
+          ancient pathways, and quiet strength create an environment that
+          invites presence over performance and depth over distraction.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature-body">
+      <div>
+        <h3>Why England</h3>
+        <p>In many ways, this retreat is a return &mdash; to the quiet landscapes where WOW Coaching was first conceived. The idea for WOW took shape while walking through the English countryside, a place that invites space to think, breathe, and listen to what truly matters.</p>
+        <p>England offers no shortage of beautiful places. We chose Herefordshire for its gentle landscapes, ancient pathways, orchards, and quiet strength &mdash; a place that invites presence rather than performance, depth rather than distraction.</p>
+      </div>
+      <div>
+        <h3>What you'll gain</h3>
+        <p>You'll leave with greater clarity, renewed energy, and a deeper sense of direction, along with a community of women who will continue to inspire and support you beyond the retreat.</p>
+        <p>Designed as a four-day strategic pause, the England retreat offers space to reflect, reframe, and reconnect &mdash; supported by coaching, guided dialogue, and shared time in nature.</p>
+      </div>
+    </div>
+
+    <div class="feature-flow">
+      <h3>Retreat flow</h3>
+      <div class="flow-grid">
+        <div class="flow-day">
+          <h4>Day 1</h4>
+          <div class="flow-date">Friday, May 29</div>
+          <ul>
+            <li>Arrival at Shucknall Court</li>
+            <li>5:30 PM &mdash; Welcome Circle</li>
+            <li>7:00 PM &mdash; Dinner</li>
+          </ul>
+        </div>
+        <div class="flow-day">
+          <h4>Day 2</h4>
+          <div class="flow-date">Saturday, May 30</div>
+          <ul>
+            <li>Optional morning activity</li>
+            <li>Workshop sessions</li>
+            <li>Group activity</li>
+            <li>Dinner &amp; reflections</li>
+          </ul>
+        </div>
+        <div class="flow-day">
+          <h4>Day 3</h4>
+          <div class="flow-date">Sunday, May 31</div>
+          <ul>
+            <li>Optional morning activity</li>
+            <li>Full-day sessions</li>
+            <li>Dinner &amp; reflections</li>
+          </ul>
+        </div>
+        <div class="flow-day">
+          <h4>Day 4</h4>
+          <div class="flow-date">Monday, June 1</div>
+          <ul>
+            <li>Optional morning activity</li>
+            <li>Final session</li>
+            <li>11:00 AM &mdash; Check-out</li>
+          </ul>
+        </div>
+      </div>
+      <p class="flow-note">Approximate schedule. Timings may adjust slightly.</p>
+    </div>
+
+    <div class="feature-package">
+      <div class="pkg-card">
+        <h3>What's included</h3>
+        <ul>
+          <li>12-week WOW Coaching Programme (pre &amp; post-retreat sessions)</li>
+          <li>4 days / 3 nights accommodation</li>
+          <li>All meals included</li>
+          <li>All retreat sessions &amp; guided activities</li>
+          <li>Mindfulness sessions, workshops, nature walks</li>
+        </ul>
+      </div>
+      <div class="pkg-card invest">
+        <h3>Investment</h3>
+        <ul>
+          <li>
+            <span class="price">GBP 2,415</span>
+            <span class="price-label">Solo traveller package · 4 days, 3 nights</span>
+          </li>
+          <li style="margin-top: 14px;">
+            <span class="price">GBP 2,185</span>
+            <span class="price-label">Per person · twin sharing · 4 days, 3 nights</span>
+          </li>
+        </ul>
+        <div class="offer">
+          <span class="offer-tag">Early Bird</span>
+          <p>Inquire about Early Bird credits.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-details-strip">
+      <div class="detail">
+        <h5>Who it's for</h5>
+        <p>Professionals and wellness seekers ready to recharge, reconnect, and explore what's next.</p>
+      </div>
+      <div class="detail">
+        <h5>Highlights</h5>
+        <p>Mindfulness sessions, workshops, nature walks, community connection.</p>
+      </div>
+      <div class="detail">
+        <h5>Why this place</h5>
+        <p>Rejuvenate, reflect, and connect in an exclusive, supportive environment.</p>
+      </div>
+    </div>
+
+    <div class="feature-cta">
+      <a href="mailto:wow@whatsinsideltd.com?subject=England%20Retreat%20-%20Reserve%20a%20spot" class="btn btn-teal btn-arrow">Reserve your spot</a>
+      <a href="mailto:wow@whatsinsideltd.com?subject=England%20Retreat%20-%20Inquiry" class="btn btn-outline">Inquire about Early Bird</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── KOMODO ───────── -->
+<section class="retreat-feature" id="komodo">
+  <div class="wrap">
+    <div class="feature-top flipped">
+      <div class="feature-visual komodo">
+        <span class="visual-tag">Indonesia</span>
+        <span class="visual-status">Upcoming</span>
+        <span class="visual-placeholder">K</span>
+        <p class="visual-caption">Sailing between islands &mdash; raw, real, grounding.</p>
+      </div>
+      <div>
+        <p class="feature-eyebrow">Retreat 02 · Upcoming</p>
+        <h2 class="feature-title">Komodo, <em>Indonesia.</em></h2>
+        <div class="feature-when">
+          <span>August 21 &ndash; 24, 2026</span>
+          <span>4 days, 3 nights</span>
+          <span>Labuan Bajo</span>
+        </div>
+        <p class="feature-lede">
+          Set in the wild beauty of Labuan Bajo, gateway to the Komodo region of
+          Indonesia, this retreat takes us to the edge of land and sea. Rugged
+          islands, vast horizons, and luminous waters create an environment that
+          invites courage over comfort and connection over convention.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature-body">
+      <div>
+        <h3>Why Komodo</h3>
+        <p>Finding the right retreat location in Indonesia has always mattered. This will be our second WOW Retreat in Komodo, and returning there feels intentional. The first experience confirmed what we sensed from the start &mdash; this place naturally creates the conditions for reflection, connection, and perspective.</p>
+        <p>Indonesia offers many extraordinary destinations &mdash; Bali, Lombok, and the islands of Flores among them. But if you could experience just one place, where would nature most powerfully invite you to pause and reconnect? That place is Komodo National Park.</p>
+        <p>Not only for the rare encounter with the Komodo dragons, but for the experience as a whole &mdash; sailing between islands, swimming in clear waters, and being surrounded by a landscape and culture that feels raw, real, and grounding.</p>
+      </div>
+      <div>
+        <h3>What you'll gain</h3>
+        <p>You'll leave with greater clarity, renewed energy, and a deeper sense of direction, along with a community of women who will continue to inspire and support you beyond the retreat.</p>
+        <p>Step out of the everyday &mdash; and into a setting that creates space for perspective, reflection, and meaningful connection.</p>
+      </div>
+    </div>
+
+    <div class="feature-flow">
+      <h3>Retreat flow</h3>
+      <div class="flow-grid">
+        <div class="flow-day">
+          <h4>Day 1</h4>
+          <div class="flow-date">Friday, Aug 21</div>
+          <ul>
+            <li>Arrival at the retreat &amp; settle in</li>
+            <li>Welcome drinks</li>
+            <li>Meet &amp; connect dinner</li>
+          </ul>
+        </div>
+        <div class="flow-day">
+          <h4>Day 2</h4>
+          <div class="flow-date">Saturday, Aug 22</div>
+          <ul>
+            <li>Daytrip sailing the Komodo region</li>
+            <li>Encounter the Komodo dragons</li>
+            <li>Insight into local culture</li>
+            <li>Snorkelling at Pink Beach</li>
+            <li>Group coaching woven through the journey</li>
+          </ul>
+        </div>
+        <div class="flow-day">
+          <h4>Day 3</h4>
+          <div class="flow-date">Sunday, Aug 23</div>
+          <ul>
+            <li>Optional morning activity</li>
+            <li>Group coaching &amp; reflection</li>
+            <li>Integration &amp; personal reflection</li>
+            <li>Group dinner in Labuan Bajo</li>
+          </ul>
+        </div>
+        <div class="flow-day">
+          <h4>Day 4</h4>
+          <div class="flow-date">Monday, Aug 24</div>
+          <ul>
+            <li>Optional morning activity</li>
+            <li>Closing session &amp; shared reflections</li>
+            <li>Common lunch &amp; departure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-package">
+      <div class="pkg-card">
+        <h3>What's included</h3>
+        <ul>
+          <li>4 days / 3 nights luxury accommodation</li>
+          <li>All meals included</li>
+          <li>Roundtrip airport transfers</li>
+          <li>1-day sailing in the Komodo region</li>
+          <li>All retreat sessions &amp; guided activities</li>
+        </ul>
+      </div>
+      <div class="pkg-card invest">
+        <h3>Investment</h3>
+        <ul>
+          <li>
+            <span class="price">USD 2,800</span>
+            <span class="price-label">Single room · 4 days, 3 nights</span>
+          </li>
+        </ul>
+        <div class="offer">
+          <span class="offer-tag">Early Bird</span>
+          <p>Up to USD 280 off when booked before end of May 2026.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-details-strip">
+      <div class="detail">
+        <h5>Who it's for</h5>
+        <p>Women ready to pause, explore what's next, and connect with like-minded women.</p>
+      </div>
+      <div class="detail">
+        <h5>Highlights</h5>
+        <p>Sailing in Komodo National Park, dragons &amp; snorkelling, coaching sessions, local community connection.</p>
+      </div>
+      <div class="detail">
+        <h5>Why this place</h5>
+        <p>A setting that creates space for perspective, reflection, and meaningful connection.</p>
+      </div>
+    </div>
+
+    <div class="feature-cta">
+      <a href="mailto:wow@whatsinsideltd.com?subject=Komodo%20Retreat%20-%20Waiting%20List" class="btn btn-teal btn-arrow">Join the waiting list</a>
+      <a href="mailto:wow@whatsinsideltd.com?subject=Komodo%20Retreat%20-%20Inquiry" class="btn btn-outline">Inquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── EL NIDO, PALAWAN ───────── -->
+<section class="retreat-feature" id="palawan">
+  <div class="wrap">
+    <div class="feature-top">
+      <div class="feature-visual palawan">
+        <span class="visual-tag">Philippines</span>
+        <span class="visual-status">Upcoming</span>
+        <span class="visual-placeholder">P</span>
+        <p class="visual-caption">Limestone cliffs, hidden lagoons, waters of impossible clarity.</p>
+      </div>
+      <div>
+        <p class="feature-eyebrow">Retreat 03 · Upcoming</p>
+        <h2 class="feature-title">El Nido, <em>Palawan.</em></h2>
+        <div class="feature-when">
+          <span>January 8 &ndash; 11, 2027</span>
+          <span>4 days, 3 nights</span>
+          <span>El Nido, Philippines</span>
+        </div>
+        <p class="feature-lede">
+          Set in the breathtaking seascapes of El Nido, Palawan, this retreat
+          unfolds among limestone cliffs, hidden lagoons, and waters of
+          impossible clarity. There is something both powerful and gentle about
+          this landscape &mdash; dramatic in form, yet deeply calming in presence.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature-body">
+      <div>
+        <h3>Why Palawan</h3>
+        <p>Finding the right retreat location in the Philippines was deeply personal for us. It is the WOW Retreat in our home country, and we felt a responsibility &mdash; not just to get it right, but to honour the richness and beauty of the Philippines in a way that felt true.</p>
+        <p>There are so many stunning places to choose from &mdash; like Siargao and Bohol and even the lesser-known but equally breathtaking Sorsogon. We have visited all of them, hoping the right one would reveal itself.</p>
+        <p>But in the end, we asked ourselves a simple question: if one could visit the Philippines only once, where would they go that captures both its natural wonder and culture? Palawan kept rising to the top. So it became clear: for the retreat in the Philippines, it had to be Palawan. It's our love letter to the country &mdash; and to the women we'll be welcoming there.</p>
+      </div>
+      <div>
+        <h3>What you'll gain</h3>
+        <p>Here, surrounded by nature's artistry, we are invited to soften and expand at the same time. To release what no longer serves, to rediscover what feels true, and to reconnect with the quiet wisdom within.</p>
+        <p>In a setting shaped by water, light, and time, depth comes naturally &mdash; and transformation feels both grounded and free. You'll leave with greater clarity, renewed energy, and a community of women who will continue to inspire and support you beyond the retreat.</p>
+      </div>
+    </div>
+
+    <div class="feature-flow">
+      <h3>Retreat flow</h3>
+      <div class="flow-grid">
+        <div class="flow-day">
+          <h4>Day 1</h4>
+          <div class="flow-date">Friday, Jan 8</div>
+          <ul>
+            <li>Arrivals</li>
+            <li>5:30 PM &mdash; Welcome Circle</li>
+            <li>7:00 PM &mdash; Dinner</li>
+          </ul>
+        </div>
+        <div class="flow-day">
+          <h4>Day 2</h4>
+          <div class="flow-date">Saturday, Jan 9</div>
+          <ul>
+            <li>Optional morning activity</li>
+            <li>Morning to afternoon &mdash; Immersion</li>
+            <li>Dinner &amp; reflections</li>
+          </ul>
+        </div>
+        <div class="flow-day">
+          <h4>Day 3</h4>
+          <div class="flow-date">Sunday, Jan 10</div>
+          <ul>
+            <li>Optional morning activity</li>
+            <li>Full-day sessions</li>
+            <li>Dinner &amp; reflections</li>
+          </ul>
+        </div>
+        <div class="flow-day">
+          <h4>Day 4</h4>
+          <div class="flow-date">Monday, Jan 11</div>
+          <ul>
+            <li>Optional morning activity</li>
+            <li>Final session</li>
+            <li>11:00 AM &mdash; Check-out</li>
+          </ul>
+        </div>
+      </div>
+      <p class="flow-note">Approximate schedule. Timings may adjust slightly.</p>
+    </div>
+
+    <div class="feature-package">
+      <div class="pkg-card">
+        <h3>What's included</h3>
+        <ul>
+          <li>12-week WOW Coaching Programme (pre &amp; post-retreat sessions)</li>
+          <li>4 days / 3 nights luxury accommodation</li>
+          <li>All meals included</li>
+          <li>Roundtrip airport transfers</li>
+          <li>Island excursions &amp; cultural immersion activities</li>
+          <li>All retreat sessions &amp; guided activities</li>
+        </ul>
+      </div>
+      <div class="pkg-card invest">
+        <h3>Investment</h3>
+        <ul>
+          <li>
+            <span class="price">USD 2,500</span>
+            <span class="price-label">Twin sharing · 4 days, 3 nights</span>
+          </li>
+          <li style="margin-top: 14px;">
+            <span class="price">USD 3,000</span>
+            <span class="price-label">Single occupancy · 4 days, 3 nights</span>
+          </li>
+        </ul>
+        <div class="offer">
+          <span class="offer-tag">Early Bird</span>
+          <p>Inquire about Early Bird credits.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-details-strip">
+      <div class="detail">
+        <h5>Who it's for</h5>
+        <p>Professionals and wellness seekers looking to recharge and reconnect.</p>
+      </div>
+      <div class="detail">
+        <h5>Highlights</h5>
+        <p>Mindfulness sessions, workshops, nature walks, community connection.</p>
+      </div>
+      <div class="detail">
+        <h5>Why this place</h5>
+        <p>Rejuvenate, reflect, and connect in an exclusive, supportive environment.</p>
+      </div>
+    </div>
+
+    <div class="feature-cta">
+      <a href="mailto:wow@whatsinsideltd.com?subject=El%20Nido%20Retreat%20-%20Waiting%20List" class="btn btn-teal btn-arrow">Join the waiting list</a>
+      <a href="mailto:wow@whatsinsideltd.com?subject=El%20Nido%20Retreat%20-%20Inquiry" class="btn btn-outline">Inquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── IS THIS FOR YOU ───────── -->
+<section class="fit">
+  <div class="wrap fit-grid">
+    <div>
+      <span class="label">Is this for you?</span>
+      <h2>For women navigating <em>what's next.</em></h2>
+    </div>
+    <div>
+      <p>
+        WOW Retreats are for women who are navigating growth, transition, or
+        change &mdash; personally or professionally &mdash; and are ready to
+        pause, reflect, and move forward with intention.
+      </p>
+      <p>
+        Whether you are seeking clarity, direction, or deeper connection, WOW
+        Retreats offer space to explore what's next in a thoughtful, supported
+        environment.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PAST RETREATS ───────── -->
+<section class="past" id="past">
+  <div class="wrap">
+    <div class="past-head">
+      <span class="label">Past retreats</span>
+      <h2>Words from women who <em>came back changed.</em></h2>
+    </div>
+    <div class="past-grid">
+      <article class="past-card">
+        <div class="where">El Nido, Philippines</div>
+        <div class="when">January 2026</div>
+        <p class="past-quote">"I left the retreat with renewed clarity about my purpose and priorities, and with a deep, lasting sense of support from the extraordinary circle of women I now call my community."</p>
+        <cite class="past-cite">— Sharon</cite>
+      </article>
+      <article class="past-card">
+        <div class="where">Bali, Indonesia</div>
+        <div class="when">October 2024</div>
+        <p class="past-quote">"What a female energy boost — a weekend filled with laughter, authentic conversations, and simply being."</p>
+        <cite class="past-cite">— Ana</cite>
+        <p class="past-quote" style="margin-top: 18px;">"Renewing of the heart and mind takes purposeful time-out, like-minded women, and good food!"</p>
+        <cite class="past-cite">— Serena</cite>
+      </article>
+      <article class="past-card">
+        <div class="where">Komodo, Indonesia</div>
+        <div class="when">July 2025</div>
+        <p class="past-quote">"One of the most meaningful parts of the retreat was learning from the women I met — across different ages, cultures, and experiences. The friendships form quickly, grounded in a real sense of community."</p>
+        <cite class="past-cite">— Hui Yian</cite>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── VIRTUAL PROGRAMMES TEASER ───────── -->
+<section class="virtual-teaser" id="virtual">
+  <div class="wrap virtual-grid">
+    <div>
+      <span class="label">Can't make a retreat?</span>
+      <h2>The Strategic Pause, <em>online.</em></h2>
+      <p>Not everyone is ready &mdash; or able &mdash; to step away for a retreat. The WOW Virtual Programme offers the same intentional pause, guided reflection, and supportive community, delivered online.</p>
+      <p>An eight-week guided coaching programme. Five live group sessions in cohorts of four to six women, two private one-to-one deep-dives, plus the WOW Transition Toolkit and lifetime access to the Alumni Circle.</p>
+      <div style="margin-top: 28px;">
+        <a href="mailto:wow@whatsinsideltd.com?subject=Strategic%20Pause" class="btn btn-teal btn-arrow">Apply for the next cohort</a>
+      </div>
+    </div>
+    <div class="virtual-card">
+      <h4>Your investment</h4>
+      <div class="price-row">
+        <span class="label-sm">Standard</span>
+        <span class="val">£1,350 + VAT</span>
+      </div>
+      <div class="price-row">
+        <span class="label-sm">Early Bird (2 months ahead)</span>
+        <span class="val">£1,150 + VAT</span>
+      </div>
+      <div class="price-row">
+        <span class="label-sm">Two instalments</span>
+        <span class="val">£575 + VAT × 2</span>
+      </div>
+      <div class="cta-row">
+        <a href="mailto:wow@whatsinsideltd.com?subject=Clarity%20Call" class="btn btn-ghost">Book a 20-min clarity call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CTA BAND ───────── -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Reserve <em>your</em> spot.</h2>
+    <p>Retreats are intentionally small and fill quickly. Tell us which one is calling, and we'll be in touch with the next steps.</p>
+    <div class="btn-row">
+      <a href="mailto:wow@whatsinsideltd.com?subject=Retreat%20Interest" class="btn btn-teal btn-arrow">Email the team</a>
+      <a href="index.html#about" class="btn btn-outline">Read about WOW</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="Women Of the World">
+          <span class="stack">
+            <span><span class="y">W</span>omen</span>
+            <span><span class="y">O</span>f the</span>
+            <span><span class="y">W</span>orld</span>
+          </span>
+        </a>
+        <p>A global coaching sisterhood. The strategic pause for strong women who are ready for what comes next.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#programmes">Programmes</a></li>
+          <li><a href="index.html#masterclasses">Masterclasses</a></li>
+          <li><a href="retreats.html">Retreats</a></li>
+          <li><a href="index.html#coaches">Coaches</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Retreats</h5>
+        <ul>
+          <li><a href="#england">Herefordshire, England</a></li>
+          <li><a href="#komodo">Komodo, Indonesia</a></li>
+          <li><a href="#palawan">El Nido, Palawan</a></li>
+          <li><a href="#virtual">Virtual Programmes</a></li>
+          <li><a href="#past">Past retreats</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:wow@whatsinsideltd.com">wow@whatsinsideltd.com</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Women Of the World. All rights reserved.</span>
+      <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

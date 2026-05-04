@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Women Of the World (WOW) Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #018EA2;
+    --teal-deep: #016574;
+    --teal-darker: #014956;
+    --teal-soft: #E6F3F5;
+    --teal-mist: #F2F9FA;
+    --yellow: #FAD108;
+    --yellow-soft: #FFF3A8;
+    --purple: #5C3D9F;
+    --purple-deep: #3D2778;
+    --purple-soft: #EFE9FA;
+    --black: #231F20;
+    --warm-gold: #E8C77A;
+    --peach: #E8A586;
+    --white: #FFFFFF;
+    --cream: #FAF7F0;
+    --grey-100: #F6F5F2;
+    --grey-200: #ECEAE5;
+    --grey-300: #D8D4CD;
+    --grey-600: #6B6660;
+    --grey-700: #4A4540;
+
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Fraunces', Georgia, serif;
+
+    --max: 1280px;
+    --gutter: clamp(20px, 4vw, 56px);
+    --pad-section: clamp(72px, 10vw, 140px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.55;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ─── Logo ─── */
+  .logo {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    line-height: 0.92;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .logo .stack { display: flex; flex-direction: column; }
+  .logo .y { color: var(--yellow); }
+  .logo .w { color: var(--white); }
+  .logo--dark .w { color: var(--black); }
+
+  /* ─── Nav ─── */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+    border-bottom: 1px solid rgba(35,31,32,0.06);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+    font-size: 14.5px; font-weight: 500; letter-spacing: 0.01em;
+  }
+  .nav-links a {
+    position: relative; padding: 6px 0;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 1.5px; background: var(--teal);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 24px; border-radius: 999px;
+    font-family: var(--font-sans); font-weight: 600;
+    font-size: 14.5px; letter-spacing: 0.01em;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-teal { background: var(--teal); color: var(--white); }
+  .btn-teal:hover { background: var(--teal-deep); }
+  .btn-yellow { background: var(--yellow); color: var(--black); }
+  .btn-yellow:hover { background: #ffdb1f; }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.45);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+  .btn-outline {
+    background: transparent; color: var(--black);
+    border: 1.5px solid var(--black);
+  }
+  .btn-outline:hover { background: var(--black); color: var(--white); }
+  .btn-outline-teal {
+    background: transparent; color: var(--teal);
+    border: 1.5px solid var(--teal);
+  }
+  .btn-outline-teal:hover { background: var(--teal); color: var(--white); }
+  .btn-arrow::after { content: '→'; font-size: 16px; }
+
+  .hamburger {
+    display: none; width: 36px; height: 36px;
+    align-items: center; justify-content: center;
+    border-radius: 8px;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 1.8px;
+    background: var(--black); position: relative;
+  }
+  .hamburger span::before, .hamburger span::after {
+    content: ''; position: absolute; left: 0;
+    width: 22px; height: 1.8px; background: var(--black);
+  }
+  .hamburger span::before { top: -7px; }
+  .hamburger span::after { top: 7px; }
+
+  /* ─── Mobile menu ─── */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 100;
+    background: var(--black); color: var(--white);
+    flex-direction: column; padding: 48px var(--gutter);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu ul { list-style: none; margin-top: 48px; display: flex; flex-direction: column; gap: 8px; }
+  .mobile-menu ul a { font-size: 28px; font-weight: 700; padding: 10px 0; display: block; }
+  .mobile-close {
+    position: absolute; top: 24px; right: var(--gutter);
+    font-size: 32px; color: var(--white); cursor: pointer; background: none; border: none;
+    font-family: inherit;
+  }
+
+  /* ─── Shared section styles ─── */
+  .section-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: var(--font-sans); font-weight: 800;
+    font-size: clamp(32px, 4.5vw, 58px);
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .section-title em {
+    font-family: var(--font-serif); font-style: italic; font-weight: 500;
+  }
+  .section-lede {
+    font-size: clamp(16px, 1.4vw, 19px);
+    color: var(--grey-600); max-width: 640px; line-height: 1.6;
+    margin-bottom: 56px;
+  }
+
+  /* ─── Hero ─── */
+  .page-hero {
+    background: var(--black);
+    color: var(--white);
+    padding: clamp(96px, 12vw, 160px) 0 clamp(80px, 10vw, 130px);
+    position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute;
+    top: -20%; right: -10%;
+    width: 60%; height: 100%;
+    background: radial-gradient(circle, rgba(1,142,162,0.35) 0%, transparent 65%);
+    filter: blur(80px);
+  }
+  .page-hero::after {
+    content: ''; position: absolute;
+    bottom: -30%; left: -5%;
+    width: 50%; height: 80%;
+    background: radial-gradient(circle, rgba(250,209,8,0.10) 0%, transparent 60%);
+    filter: blur(60px);
+  }
+  .page-hero-inner { position: relative; z-index: 1; max-width: 920px; }
+  .breadcrumb {
+    font-size: 12.5px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 28px; opacity: 0.72;
+  }
+  .breadcrumb a { color: var(--white); transition: opacity 0.2s; }
+  .breadcrumb a:hover { opacity: 1; }
+  .breadcrumb .sep { margin: 0 10px; opacity: 0.5; }
+  .breadcrumb .current { color: var(--teal-soft); }
+
+  .page-hero h1 {
+    font-family: var(--font-sans); font-weight: 800;
+    font-size: clamp(40px, 7vw, 96px);
+    line-height: 0.98; letter-spacing: -0.025em;
+    margin-bottom: 32px;
+  }
+  .page-hero h1 .accent {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 500; color: var(--yellow);
+  }
+  .page-hero .lede {
+    font-size: clamp(18px, 1.6vw, 22px);
+    opacity: 0.88; max-width: 640px; line-height: 1.55;
+    margin-bottom: 44px; font-weight: 400;
+  }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  /* ─── Belief / Why-How-What ─── */
+  .belief {
+    padding: var(--pad-section) 0;
+    background: var(--cream);
+  }
+  .belief-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+    margin-top: 56px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .belief-block {
+    padding: 56px 44px;
+    display: flex; flex-direction: column; gap: 18px;
+    transition: transform 0.3s ease;
+  }
+  .belief-block:hover { transform: translateY(-2px); }
+  .belief-block.why { background: var(--teal); color: var(--white); }
+  .belief-block.how { background: var(--teal-deep); color: var(--white); }
+  .belief-block.what { background: var(--black); color: var(--white); }
+  .belief-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; opacity: 0.85;
+  }
+  .belief-tag::before {
+    content: ''; width: 24px; height: 1px;
+    background: currentColor; opacity: 0.6;
+  }
+  .belief-block.why .belief-tag { color: var(--yellow); opacity: 1; }
+  .belief-block.what .belief-tag { color: var(--teal-soft); }
+  .belief-headline {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(24px, 2.4vw, 34px);
+    line-height: 1.18; font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  .belief-body {
+    font-size: 15.5px; line-height: 1.65; opacity: 0.86;
+  }
+  .belief-block.what .belief-body { opacity: 0.72; }
+
+  /* ─── Credentials strip ─── */
+  .credentials {
+    background: var(--white);
+    padding: clamp(48px, 6vw, 80px) 0;
+    border-top: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200);
+  }
+  .credentials-inner {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: clamp(32px, 5vw, 64px); align-items: center;
+  }
+  .credentials-label {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--grey-600); max-width: 220px;
+    line-height: 1.5;
+  }
+  .credentials-list {
+    display: flex; flex-wrap: wrap; gap: 32px 56px;
+    align-items: center;
+  }
+  .credentials-list span {
+    font-family: var(--font-serif); font-weight: 500;
+    font-size: clamp(18px, 1.6vw, 24px);
+    color: var(--black); letter-spacing: -0.01em;
+    opacity: 0.78;
+    transition: opacity 0.2s;
+  }
+  .credentials-list span:hover { opacity: 1; }
+  .credentials-list .dot {
+    font-size: 8px; opacity: 0.3;
+  }
+
+  /* ─── Stats strip ─── */
+  .stats {
+    background: var(--teal);
+    padding: clamp(56px, 7vw, 96px) 0;
+    position: relative; overflow: hidden;
+  }
+  .stats::before {
+    content: ''; position: absolute;
+    top: -50%; right: -10%; width: 50%; height: 200%;
+    background: radial-gradient(circle, rgba(1,73,86,0.5) 0%, transparent 60%);
+    filter: blur(60px);
+  }
+  .stats-grid {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: left;
+  }
+  .stat-item {
+    color: var(--white);
+    padding-left: 24px;
+    border-left: 2px solid rgba(255,255,255,0.18);
+  }
+  .stat-number {
+    font-family: var(--font-sans); font-weight: 800;
+    font-size: clamp(38px, 4.6vw, 64px);
+    line-height: 1; letter-spacing: -0.03em;
+    color: var(--white);
+    display: block; margin-bottom: 12px;
+  }
+  .stat-number .suffix { color: var(--yellow); }
+  .stat-label {
+    font-size: 14px; font-weight: 500;
+    opacity: 0.85; line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+  .stats-note {
+    margin-top: 36px; padding: 14px 18px;
+    background: rgba(0,0,0,0.18); border-radius: 10px;
+    font-size: 12.5px; color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+    border-left: 3px solid var(--yellow);
+    max-width: 520px;
+  }
+  .stats-note strong { color: var(--yellow); font-weight: 600; }
+
+  /* ─── Story ─── */
+  .story {
+    padding: var(--pad-section) 0;
+    background: var(--white);
+  }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: clamp(48px, 6vw, 96px);
+    align-items: start;
+  }
+  .story-body p {
+    font-size: 17px; line-height: 1.75;
+    color: var(--grey-700); margin-bottom: 22px;
+  }
+  .story-body p:last-child { margin-bottom: 0; }
+  .story-body strong { color: var(--black); font-weight: 600; }
+  .story-pullquote {
+    margin: 32px 0;
+    padding: 28px 32px;
+    background: var(--teal-soft);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 16px 16px 0;
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.35;
+    color: var(--teal-darker);
+    font-weight: 500;
+  }
+
+  /* ─── Values ─── */
+  .values {
+    padding: var(--pad-section) 0;
+    background: var(--black); color: var(--white);
+    position: relative; overflow: hidden;
+  }
+  .values::before {
+    content: ''; position: absolute;
+    bottom: -40%; left: -10%;
+    width: 60%; height: 120%;
+    background: radial-gradient(circle, rgba(1,142,162,0.18) 0%, transparent 60%);
+    filter: blur(80px);
+  }
+  .values .wrap { position: relative; z-index: 1; }
+  .values .section-eyebrow { color: var(--teal-soft); }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .value-card {
+    padding: 44px 36px 40px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    background: rgba(255,255,255,0.03);
+    transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .value-card:hover {
+    background: rgba(1,142,162,0.10);
+    border-color: var(--teal);
+    transform: translateY(-4px);
+  }
+  .value-num {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 32px; font-weight: 400;
+    color: var(--teal-soft);
+    line-height: 1;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 8px;
+  }
+  .value-card.purple .value-num { color: #b9a4e8; }
+  .value-card.warm .value-num { color: var(--yellow); }
+
+  .value-card h3 {
+    font-size: 26px; font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .value-card .value-sub {
+    font-family: var(--font-serif); font-style: italic;
+    color: rgba(255,255,255,0.7); font-size: 16px;
+    font-weight: 400;
+  }
+  .value-card p {
+    font-size: 15.5px; line-height: 1.65;
+    color: rgba(255,255,255,0.72);
+    margin-top: 8px;
+  }
+
+  /* ─── Claims banner ─── */
+  .claims {
+    background: var(--teal);
+    padding: clamp(80px, 10vw, 140px) 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .claims::before {
+    content: '';
+    position: absolute; top: -30%; right: -10%;
+    width: 55%; height: 140%;
+    background: radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 65%);
+    filter: blur(60px);
+  }
+  .claims-inner {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+  }
+  .claim-line {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 400;
+    font-size: clamp(28px, 5vw, 64px);
+    color: var(--white); line-height: 1.05;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+    padding: 36px 0;
+    letter-spacing: -0.01em;
+    display: flex; align-items: baseline; gap: 24px;
+  }
+  .claim-line:first-child { padding-top: 0; }
+  .claim-line:last-child { border-bottom: none; padding-bottom: 0; }
+  .claim-line .num {
+    font-family: var(--font-sans); font-style: normal;
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.55);
+    width: 36px; flex-shrink: 0;
+  }
+  .claim-line .highlight { color: var(--yellow); font-weight: 500; }
+
+  /* ─── Founder ─── */
+  .founder {
+    padding: var(--pad-section) 0;
+    background: var(--white);
+  }
+  .founder-inner {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: clamp(48px, 7vw, 100px);
+    align-items: start;
+  }
+  .founder-photo {
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+    display: flex; align-items: flex-end;
+    padding: 28px;
+    overflow: hidden; position: relative;
+  }
+  .founder-photo::before {
+    content: 'I·B';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 140px; color: rgba(255,255,255,0.16);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .founder-photo .label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+    z-index: 1;
+  }
+  .founder-content { display: flex; flex-direction: column; gap: 22px; }
+  .founder-quote {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.35; color: var(--black);
+    font-weight: 500;
+  }
+  .founder-quote .accent { color: var(--teal); }
+  .founder-meta {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 6px 0 6px 18px;
+    border-left: 3px solid var(--teal);
+  }
+  .founder-name { font-weight: 700; font-size: 17px; }
+  .founder-role { font-size: 14px; color: var(--grey-600); }
+  .founder-bio {
+    font-size: 16px; line-height: 1.7; color: var(--grey-700);
+  }
+  .founder-bio + .founder-bio { margin-top: 4px; }
+  .founder-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;
+  }
+  .founder-tag {
+    font-size: 12.5px; font-weight: 500;
+    padding: 7px 14px; border-radius: 999px;
+    background: var(--cream); color: var(--grey-700);
+    border: 1px solid var(--grey-200);
+  }
+  .founder-actions {
+    margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap;
+  }
+
+  /* ─── CTA band ─── */
+  .cta-band {
+    background: var(--black); color: var(--white);
+    padding: clamp(80px, 10vw, 130px) 0;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: ''; position: absolute;
+    top: -40%; left: 50%; transform: translateX(-50%);
+    width: 60%; height: 160%;
+    background: radial-gradient(circle, rgba(250,209,8,0.10) 0%, transparent 60%);
+    filter: blur(60px);
+  }
+  .cta-band-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+  .cta-band h2 {
+    font-family: var(--font-sans); font-weight: 800;
+    font-size: clamp(32px, 4.5vw, 58px);
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+  .cta-band h2 em {
+    font-family: var(--font-serif); font-style: italic;
+    font-weight: 500; color: var(--yellow);
+  }
+  .cta-band p {
+    font-size: clamp(16px, 1.4vw, 19px);
+    opacity: 0.78; margin-bottom: 44px; line-height: 1.6;
+    max-width: 580px; margin-left: auto; margin-right: auto;
+  }
+  .cta-buttons { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+  /* ─── Footer ─── */
+  footer {
+    background: var(--black); color: var(--white);
+    padding: clamp(64px, 8vw, 100px) 0 40px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+  .footer-brand .logo { margin-bottom: 20px; }
+  .footer-brand p { font-size: 14.5px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 280px; }
+  .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 18px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a { font-size: 14.5px; color: rgba(255,255,255,0.7); transition: color 0.2s; }
+  .footer-col ul a:hover { color: var(--white); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.35); flex-wrap: wrap; gap: 12px; }
+  .footer-bottom a { color: rgba(255,255,255,0.45); transition: color 0.2s; }
+  .footer-bottom a:hover { color: var(--white); }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .belief-grid { grid-template-columns: 1fr; gap: 4px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .story-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .founder-inner { grid-template-columns: 280px 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .credentials-inner { grid-template-columns: 1fr; gap: 24px; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta-desktop { display: none; }
+    .hamburger { display: flex; }
+    .values-grid { grid-template-columns: 1fr; }
+    .founder-inner { grid-template-columns: 1fr; }
+    .founder-photo { aspect-ratio: 4/3; max-width: 400px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .claim-line { font-size: clamp(24px, 6vw, 38px); }
+    .claim-line .num { width: 24px; font-size: 11px; }
+    .credentials-list { gap: 20px 32px; }
+    .credentials-list span { font-size: 18px; }
+  }
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────── NAV ───────── -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo logo--dark" aria-label="Women Of the World">
+      <span class="stack">
+        <span><span class="y">W</span>omen</span>
+        <span><span class="y">O</span>f the</span>
+        <span><span class="y">W</span>orld</span>
+      </span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="index.html#programmes">Programmes</a></li>
+        <li><a href="index.html#masterclasses">Masterclasses</a></li>
+        <li><a href="retreats.html">Retreats</a></li>
+        <li><a href="index.html#coaches">Coaches</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+      </ul>
+    </nav>
+    <a href="https://bit.ly/WOWTaster" target="_blank" rel="noopener" class="btn btn-teal nav-cta-desktop">Free taster session</a>
+    <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">×</button>
+  <ul onclick="document.getElementById('mobileMenu').classList.remove('open')">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#programmes">Programmes</a></li>
+    <li><a href="index.html#masterclasses">Masterclasses</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="index.html#coaches">Coaches</a></li>
+    <li><a href="index.html#testimonials">Testimonials</a></li>
+    <li><a href="https://bit.ly/WOWTaster" target="_blank" rel="noopener">Free taster session</a></li>
+  </ul>
+</div>
+
+<!-- ───────── HERO ───────── -->
+<section class="page-hero">
+  <div class="wrap page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">·</span>
+      <span class="current">About</span>
+    </div>
+    <h1>No one becomes their<br><span class="accent">bravest self</span> alone.</h1>
+    <p class="lede">
+      WOW is a global coaching community built on one belief &mdash; that strong
+      women don't need fixing. They need space, honesty, and the right people
+      around them.
+    </p>
+    <div class="hero-cta">
+      <a href="https://bit.ly/WOWTaster" target="_blank" rel="noopener" class="btn btn-yellow btn-arrow">Join a free taster</a>
+      <a href="#story" class="btn btn-ghost">Read our story</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── BELIEF ───────── -->
+<section class="belief">
+  <div class="wrap">
+    <span class="section-eyebrow">Core Belief</span>
+    <h2 class="section-title">The <em>why, how,</em> and what.</h2>
+    <p class="section-lede">Everything WOW does flows from a single conviction. Here's the thinking behind it.</p>
+
+    <div class="belief-grid">
+      <div class="belief-block why">
+        <span class="belief-tag">Why</span>
+        <p class="belief-headline">No one becomes their bravest self alone.</p>
+        <p class="belief-body">
+          Growth has never been a solo endeavour. The most significant shifts
+          happen in the company of others &mdash; people who challenge you,
+          reflect your thinking back, and remind you of what's possible. That's
+          the foundation of everything WOW does.
+        </p>
+      </div>
+      <div class="belief-block how">
+        <span class="belief-tag">How</span>
+        <p class="belief-headline">By creating a strategic pause.</p>
+        <p class="belief-body">
+          Strong women don't need fixing. They need space to think, laugh,
+          reflect, and tell the truth. Away from noise, pressure, and
+          expectation, clarity emerges. With the right people around them, that
+          clarity turns into action.
+        </p>
+      </div>
+      <div class="belief-block what">
+        <span class="belief-tag">What</span>
+        <p class="belief-headline">A connected global community.</p>
+        <p class="belief-body">
+          Coaching circles, retreats, workshops, masterclasses &mdash; and a
+          network of women across the world who stay connected long after the
+          programme ends. WOW is not just a programme. It's a force.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CREDENTIALS ───────── -->
+<section class="credentials">
+  <div class="wrap credentials-inner">
+    <p class="credentials-label">
+      Our coaches have led at
+    </p>
+    <div class="credentials-list">
+      <span>British Council</span>
+      <span class="dot">●</span>
+      <span>Unilever</span>
+      <span class="dot">●</span>
+      <span>IKEA</span>
+      <span class="dot">●</span>
+      <span>Apple</span>
+      <span class="dot">●</span>
+      <span>BMI Healthcare</span>
+      <span class="dot">●</span>
+      <span>NHS</span>
+      <span class="dot">●</span>
+      <span>Interserve</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── STATS ───────── -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number" data-target="144" data-suffix="+">0<span class="suffix">+</span></span>
+        <span class="stat-label">Alumni worldwide</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="26" data-suffix="">0</span>
+        <span class="stat-label">Countries represented</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="25" data-suffix="+">0<span class="suffix">+</span></span>
+        <span class="stat-label">Years of coaching experience</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="2020" data-suffix="">0</span>
+        <span class="stat-label">Founded</span>
+      </div>
+    </div>
+    <p class="stats-note">
+      <strong>Heads up &mdash;</strong> verify these numbers before going live. Search the file for
+      <code style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">data-target</code>
+      to update.
+    </p>
+  </div>
+</section>
+
+<!-- ───────── STORY ───────── -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="story-grid">
+      <div>
+        <span class="section-eyebrow">Our story</span>
+        <h2 class="section-title">Built for women who are <em>ready for what's next.</em></h2>
+      </div>
+      <div class="story-body">
+        <p>
+          WOW was founded by <strong>Isa Buencamino-Agbayani</strong>, a Filipino
+          leadership coach based between England and Bahrain, with 29 years of
+          corporate leadership development experience. She saw a consistent
+          pattern: ambitious, capable women with experience and drive &mdash;
+          stalling not because they lacked ability, but because they lacked space.
+        </p>
+        <p>
+          Space to think clearly. Space to be honest. Space to be held
+          accountable by people who genuinely understood the weight of building a
+          life and a career at the same time.
+        </p>
+
+        <div class="story-pullquote">
+          Strong women don't need fixing. They need space to think, laugh,
+          reflect, and tell the truth.
+        </div>
+
+        <p>
+          WOW was built to create that space. What began as a structured group
+          coaching programme has grown into a global community &mdash; built on
+          rigorous coaching practice, and held together by something that
+          surprises many participants: the relationships they didn't expect to
+          form.
+        </p>
+        <p>
+          <strong>Strangers become sisters.</strong> That's not a tagline.
+          It's what actually happens.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── VALUES ───────── -->
+<section class="values">
+  <div class="wrap">
+    <span class="section-eyebrow">Our values</span>
+    <h2 class="section-title" style="color: var(--white);">What holds<br><em>WOW together.</em></h2>
+
+    <div class="values-grid">
+      <div class="value-card warm">
+        <div class="value-num">01</div>
+        <h3>Courage</h3>
+        <span class="value-sub">"Courage grows faster together."</span>
+        <p>
+          Courage is the shift WOW creates. People leave clearer about what
+          matters and braver about acting on it. It doesn't happen in
+          isolation &mdash; it builds in the company of others willing to be
+          honest.
+        </p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <h3>Kindness</h3>
+        <span class="value-sub">"Steady, not soft."</span>
+        <p>
+          Kindness shapes every WOW interaction. It's how people are held,
+          challenged, and supported. WOW leads with heart, care, and
+          humanity &mdash; even when conversations are hard.
+        </p>
+      </div>
+      <div class="value-card purple">
+        <div class="value-num">03</div>
+        <h3>Sisterhood</h3>
+        <span class="value-sub">"Strangers become sisters."</span>
+        <p>
+          WOW grows stronger in community. People gain momentum when they're
+          seen, supported, and connected. What begins as a group becomes a
+          sisterhood &mdash; and that sisterhood lasts.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CLAIMS ───────── -->
+<section class="claims">
+  <div class="wrap">
+    <div class="claims-inner">
+      <p class="claim-line">
+        <span class="num">01</span>
+        <span><span class="highlight">Strangers</span> become Sisters.</span>
+      </p>
+      <p class="claim-line">
+        <span class="num">02</span>
+        <span>No one becomes their <span class="highlight">bravest self</span> alone.</span>
+      </p>
+      <p class="claim-line">
+        <span class="num">03</span>
+        <span>Courage grows <span class="highlight">faster together.</span></span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOUNDER ───────── -->
+<section class="founder">
+  <div class="wrap founder-inner">
+    <div class="founder-photo">
+      <span class="label">Drop Isa's portrait here</span>
+    </div>
+    <div class="founder-content">
+      <span class="section-eyebrow">The founder</span>
+      <p class="founder-quote">
+        "Leadership development is about <span class="accent">helping women see what's already possible</span> &mdash; and giving them the room to act on it."
+      </p>
+      <div class="founder-meta">
+        <span class="founder-name">Isa Buencamino-Agbayani</span>
+        <span class="founder-role">Founder · WOW Coaching · ICF Accredited Coach (PCC)</span>
+      </div>
+      <p class="founder-bio">
+        Isa is a Filipino leadership coach based between England and Bahrain.
+        She began her career working for large multinational organisations
+        before setting up her own company in 2018 in the UK. With 29 years of
+        corporate leadership development experience &mdash; including senior
+        roles at Unilever and Interserve &mdash; she has coached senior
+        executives across Europe, Asia, South America, and Africa.
+      </p>
+      <p class="founder-bio">
+        An ICF-accredited PCC coach and Associate Faculty of the Teleos
+        Leadership Institute in Philadelphia, Isa also leads
+        <em>Coaching Essentials International</em>, an ICF accreditation
+        programme. She founded WOW in 2020 from a simple conviction: that the
+        most ambitious women in the world needed each other more than they
+        needed another solo coaching programme.
+      </p>
+      <div class="founder-tags">
+        <span class="founder-tag">ICF Accredited (PCC)</span>
+        <span class="founder-tag">Teleos Leadership Institute</span>
+        <span class="founder-tag">29 years experience</span>
+        <span class="founder-tag">Unilever · Interserve</span>
+      </div>
+      <div class="founder-actions">
+        <a href="https://www.linkedin.com/in/isa-buencamino-agbayani-43b30a4/" target="_blank" rel="noopener" class="btn btn-outline btn-arrow">View on LinkedIn</a>
+        <a href="https://bit.ly/WOWTaster" target="_blank" rel="noopener" class="btn btn-teal btn-arrow">Book a taster session</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CTA ───────── -->
+<section class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <h2>Ready to become your <em>bravest self?</em></h2>
+      <p>
+        Join women across the world who've taken the strategic pause &mdash;
+        and come out the other side clearer, braver, and better connected.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://bit.ly/WOWTaster" target="_blank" rel="noopener" class="btn btn-yellow btn-arrow">Sign up for a free taster</a>
+        <a href="index.html#programmes" class="btn btn-ghost">Explore programmes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="Women Of the World">
+          <span class="stack">
+            <span><span class="y">W</span>omen</span>
+            <span><span class="y">O</span>f the</span>
+            <span><span class="y">W</span>orld</span>
+          </span>
+        </a>
+        <p>WOW Coaching &mdash; an all-women global group coaching programme for women shaping the next stage of their career and life.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#programmes">Programmes</a></li>
+          <li><a href="index.html#masterclasses">Masterclasses</a></li>
+          <li><a href="retreats.html">Retreats</a></li>
+          <li><a href="index.html#coaches">Coaches</a></li>
+          <li><a href="index.html#testimonials">Testimonials</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Join</h5>
+        <ul>
+          <li><a href="https://bit.ly/WOWTaster" target="_blank" rel="noopener">Free taster session</a></li>
+          <li><a href="index.html#programmes">Apply for a programme</a></li>
+          <li><a href="retreats.html">Register for a retreat</a></li>
+          <li><a href="retreats.html#virtual">Virtual programme</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:WOW@whatsinsideltd.com">WOW@whatsinsideltd.com</a></li>
+          <li><a href="https://www.linkedin.com/company/women-of-the-world-wow/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Women Of the World. Hosted by What's Inside Ltd.</span>
+      <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Count-up animation triggered when stats section scrolls into view
+  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+
+  function countUp(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(eased * target);
+      el.innerHTML = current.toLocaleString() + (suffix ? '<span class="suffix">' + suffix + '</span>' : '');
+      if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        statNumbers.forEach(el => countUp(el));
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  const statsSection = document.querySelector('.stats');
+  if (statsSection) observer.observe(statsSection);
+</script>
+
+</body>
+</html>

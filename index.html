@@ -283,53 +283,69 @@
   }
   .pillar p { color: var(--grey-600); font-size: 15.5px; line-height: 1.6; }
 
-  /* ─── Founder ─── */
-  .founder { background: var(--white); padding: clamp(80px, 10vw, 140px) 0; }
-  .founder-inner {
-    display: grid; grid-template-columns: 1fr 1.4fr;
-    gap: clamp(40px, 6vw, 80px); align-items: center;
+  /* ─── Leadership ─── */
+  .leadership { background: var(--white); padding: clamp(80px, 10vw, 140px) 0; }
+  .leadership-head { max-width: 880px; margin-bottom: 56px; }
+  .leadership-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 4vw, 56px);
   }
-  .founder-photo {
-    aspect-ratio: 4/5; border-radius: 24px;
+  .leader {
+    display: grid; grid-template-columns: 240px 1fr;
+    gap: 28px; align-items: start;
+    padding: 32px;
+    border: 1px solid var(--grey-200);
+    border-radius: 24px;
+    background: var(--white);
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .leader:hover {
+    border-color: var(--teal); transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(35,31,32,0.06);
+  }
+  .leader-photo {
+    aspect-ratio: 4/5; border-radius: 18px;
     background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+    background-size: cover; background-position: center top;
     position: relative; overflow: hidden;
-    display: flex; align-items: flex-end; padding: 28px;
   }
-  .founder-photo::before {
-    content: 'I·B';
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+  .leader-photo .role-pill {
+    position: absolute; top: 14px; left: 14px;
+    padding: 5px 12px; border-radius: 999px;
+    background: rgba(255,255,255,0.95); color: var(--black);
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .leader-content { display: flex; flex-direction: column; gap: 12px; }
+  .leader-name {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+  .leader-role {
+    font-size: 13.5px; color: var(--teal); font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .leader-where { font-size: 14px; color: var(--grey-600); }
+  .leader-quote {
     font-family: var(--font-serif); font-style: italic;
-    font-size: 130px; color: rgba(255, 255, 255, 0.15);
-    letter-spacing: -0.03em;
+    font-size: 16.5px; line-height: 1.45;
+    color: var(--grey-700); margin-top: 8px;
+    padding-top: 14px; border-top: 1px solid var(--grey-200);
   }
-  .founder-photo .label {
-    color: var(--white); font-size: 12.5px;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    z-index: 1; opacity: 0.85;
+  .leader-bio {
+    font-size: 14.5px; line-height: 1.6; color: var(--grey-600);
   }
-  .founder-quote {
-    font-family: var(--font-serif); font-style: italic;
-    font-size: clamp(24px, 2.8vw, 36px); line-height: 1.25;
-    letter-spacing: -0.01em; margin-bottom: 32px;
-    color: var(--black); font-weight: 500;
+  .leader-actions {
+    margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;
   }
-  .founder-quote .accent { color: var(--teal); }
-  .founder-meta {
-    display: grid; grid-template-columns: auto auto; gap: 8px 24px;
-    margin-bottom: 28px;
-    padding-top: 24px; border-top: 1px solid rgba(35,31,32,0.12);
+  .leader-link {
+    font-size: 13px; font-weight: 600;
+    color: var(--teal); display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--teal-soft);
+    transition: background 0.2s, color 0.2s;
   }
-  .founder-name {
-    font-weight: 700; font-size: 17px;
-  }
-  .founder-role {
-    font-size: 14px; color: var(--grey-600); letter-spacing: 0.04em;
-  }
-  .founder-bio {
-    font-size: 15.5px; line-height: 1.65; color: var(--grey-600);
-  }
-  .founder-bio + .founder-bio { margin-top: 14px; }
+  .leader-link:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
 
   /* ─── Programmes ─── */
   .programmes { background: var(--black); color: var(--white); }
@@ -446,9 +462,33 @@
 
   /* ─── Masterclasses ─── */
   .masters { background: var(--cream); }
+  .masters-feature {
+    margin-top: 56px; margin-bottom: 56px;
+    aspect-ratio: 21/8;
+    border-radius: 24px; overflow: hidden;
+    background-size: cover; background-position: center;
+    position: relative;
+    display: flex; align-items: flex-end;
+    padding: 40px;
+    color: var(--white);
+  }
+  .masters-feature::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(1,73,86,0.55) 0%, rgba(35,31,32,0.45) 100%);
+  }
+  .masters-feature-text {
+    position: relative; z-index: 1;
+    max-width: 540px;
+  }
+  .masters-feature-text .tagline {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(22px, 2.6vw, 34px);
+    line-height: 1.25; letter-spacing: -0.01em;
+    font-weight: 500;
+  }
   .masters-grid {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: clamp(40px, 6vw, 80px); margin-top: 56px;
+    gap: clamp(40px, 6vw, 80px);
     align-items: start;
   }
   .masters-info p {
@@ -515,6 +555,10 @@
   .retreat-card.england { background: linear-gradient(135deg, #2a5560, var(--teal-deep)); }
   .retreat-card.komodo { background: linear-gradient(135deg, var(--teal), #014b58); }
   .retreat-card.palawan { background: linear-gradient(135deg, var(--teal), #0a98a9 60%, #d99775); }
+  .retreat-card.has-photo { background-size: cover; background-position: center; }
+  .retreat-card.has-photo::before {
+    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.75) 100%);
+  }
   .retreat-card .badge {
     position: absolute; top: 24px; left: 24px;
     padding: 6px 14px;
@@ -569,6 +613,7 @@
   .coach-photo {
     aspect-ratio: 1/1.1;
     background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+    background-size: cover; background-position: center top;
     position: relative;
     display: flex; align-items: flex-end; padding: 18px;
     color: var(--white);
@@ -577,6 +622,12 @@
   .coach-photo.warm { background: linear-gradient(135deg, var(--grey-700), #6b5045); }
   .coach-photo.cool { background: linear-gradient(135deg, #2a5560, var(--teal-darker)); }
   .coach-photo.indigo { background: linear-gradient(135deg, #2c3a6c, #4a5b96); }
+  .coach-photo.has-photo::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.55) 100%);
+    pointer-events: none;
+  }
+  .coach-photo.has-photo .initial { display: none; }
   .coach-photo .initial {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
@@ -588,7 +639,7 @@
     letter-spacing: 0.16em; text-transform: uppercase;
     background: rgba(255,255,255,0.95); color: var(--black);
     padding: 4px 11px; border-radius: 999px;
-    z-index: 1;
+    z-index: 1; position: relative;
   }
   .coach-info { padding: 24px 26px 28px; flex: 1; display: flex; flex-direction: column; }
   .coach-info h4 {
@@ -622,6 +673,34 @@
   }
   .coaches-note p {
     font-size: 14.5px; color: var(--grey-600); line-height: 1.5;
+  }
+
+  /* ─── Community strip ─── */
+  .community-strip {
+    aspect-ratio: 21/6;
+    background-size: cover; background-position: center;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); text-align: center;
+    padding: 0 var(--gutter);
+  }
+  .community-strip::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(1,142,162,0.6) 0%, rgba(35,31,32,0.55) 100%);
+  }
+  .community-strip-text {
+    position: relative; z-index: 1; max-width: 720px;
+  }
+  .community-strip-text .label {
+    display: inline-block; font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 7px 16px; border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 999px; margin-bottom: 22px;
+  }
+  .community-strip-text h3 {
+    font-family: var(--font-serif); font-style: italic; font-weight: 500;
+    font-size: clamp(24px, 3vw, 38px);
+    line-height: 1.2; letter-spacing: -0.01em;
   }
 
   /* ─── Testimonials ─── */
@@ -775,7 +854,8 @@
     .nav-links { display: none; }
     .hamburger { display: flex; }
     .nav-cta-desktop { display: none; }
-    .about-grid, .founder-inner, .masters-grid { grid-template-columns: 1fr; }
+    .about-grid, .masters-grid, .leadership-grid { grid-template-columns: 1fr; }
+    .leader { grid-template-columns: 200px 1fr; }
     .prog-grid, .retreat-grid, .quote-grid, .apply-grid, .pillars-grid { grid-template-columns: 1fr; }
     .outcomes-list { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -786,6 +866,8 @@
     .outcomes-list { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .leader { grid-template-columns: 1fr; padding: 24px; }
+    .leader-photo { aspect-ratio: 4/3; max-width: 100%; }
   }
 
   /* Mobile menu */
@@ -929,33 +1011,64 @@
   </div>
 </section>
 
-<!-- ───────── FOUNDER ───────── -->
-<section class="founder">
-  <div class="wrap founder-inner">
-    <div class="founder-photo">
-      <span class="label">Founder portrait</span>
+<!-- ───────── LEADERSHIP ───────── -->
+<section class="leadership">
+  <div class="wrap">
+    <div class="leadership-head">
+      <p class="section-eyebrow">Leadership</p>
+      <h2 class="section-title">The team behind <em>WOW.</em></h2>
+      <p class="section-lede" style="max-width: 700px;">
+        WOW is led by a small leadership team and a circle of accredited
+        coaches. Day-to-day, two people steer the work.
+      </p>
     </div>
-    <div>
-      <p class="section-eyebrow">Founder</p>
-      <p class="founder-quote">
-        Leadership development is about <span class="accent">helping women see what's already possible</span> &mdash; and giving them the room to act on it.
-      </p>
-      <div class="founder-meta">
-        <span class="founder-name">Isa Buencamino-Agbayani</span>
-        <span class="founder-role">Founder · WOW Coaching</span>
-      </div>
-      <p class="founder-bio">
-        Filipino, based between England and Bahrain. Leadership development
-        specialist and Leadership Coach with 29 years of corporate leadership
-        development experience with Unilever and Interserve.
-      </p>
-      <p class="founder-bio">
-        Has coached senior executives in companies based in Europe, Asia,
-        South America, and Africa. Programme Director of WOW.
-      </p>
-      <div style="margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="https://www.linkedin.com/in/isa-buencamino-agbayani-43b30a4/" target="_blank" rel="noopener" class="btn btn-outline btn-arrow">View on LinkedIn</a>
-      </div>
+
+    <div class="leadership-grid">
+
+      <article class="leader">
+        <div class="leader-photo" style="background-image: url('Images/Founder/isa-portrait.jpg');">
+          <span class="role-pill">Founder</span>
+        </div>
+        <div class="leader-content">
+          <h3 class="leader-name">Isa Buencamino-Agbayani</h3>
+          <p class="leader-role">Founder · Programme Director</p>
+          <p class="leader-where">Filipino &middot; based between England &amp; Bahrain</p>
+          <p class="leader-quote">
+            "Leadership development is about helping women see what's already possible &mdash; and giving them the room to act on it."
+          </p>
+          <p class="leader-bio">
+            Leadership development specialist and Leadership Coach with 29 years
+            of corporate experience at Unilever and Interserve. ICF-accredited
+            (PCC) and Associate Faculty of the Teleos Leadership Institute. Has
+            coached senior executives across Europe, Asia, South America, and
+            Africa.
+          </p>
+          <div class="leader-actions">
+            <a href="https://www.linkedin.com/in/isa-buencamino-agbayani-43b30a4/" target="_blank" rel="noopener" class="leader-link">LinkedIn &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="leader">
+        <div class="leader-photo" style="background-image: url('Images/COO/ana-marques.jpg');">
+          <span class="role-pill">COO</span>
+        </div>
+        <div class="leader-content">
+          <h3 class="leader-name">Ana Marques</h3>
+          <p class="leader-role">Chief Operating Officer</p>
+          <p class="leader-where">&nbsp;</p>
+          <p class="leader-quote">
+            <em style="background: rgba(250,209,8,0.12); padding: 2px 6px;">[ Short quote from Ana &mdash; one line on what she cares about / how she shows up ]</em>
+          </p>
+          <p class="leader-bio">
+            <em style="background: rgba(1,142,162,0.08); padding: 2px 6px;">[ Ana's bio goes here &mdash; based on her LinkedIn. A few lines on background, role at WOW, and what she leads day-to-day. ]</em>
+          </p>
+          <div class="leader-actions">
+            <a href="https://www.linkedin.com/in/ana-m-marques/" target="_blank" rel="noopener" class="leader-link">LinkedIn &rarr;</a>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -1064,6 +1177,12 @@
       and depth on key development topics.
     </p>
 
+    <div class="masters-feature" style="background-image: url('Images/Generic/generic-1.jpg');">
+      <div class="masters-feature-text">
+        <p class="tagline">"Conversations with inspiring female role models &mdash; the kind of room you don't get anywhere else."</p>
+      </div>
+    </div>
+
     <div class="masters-grid">
       <div class="masters-info">
         <p>
@@ -1122,7 +1241,7 @@
     </p>
 
     <div class="retreat-grid">
-      <a href="retreats.html#england" class="retreat-card england" style="text-decoration: none;">
+      <a href="retreats.html#england" class="retreat-card england has-photo" style="background-image: url('Images/Retreats/herefordshire-england.jpg'); text-decoration: none;">
         <span class="badge">England</span>
         <div class="content">
           <h3>Herefordshire</h3>
@@ -1130,7 +1249,7 @@
           <p class="desc">A return to where WOW was first conceived. Gentle landscapes, ancient pathways, presence over performance.</p>
         </div>
       </a>
-      <a href="retreats.html#komodo" class="retreat-card komodo" style="text-decoration: none;">
+      <a href="retreats.html#komodo" class="retreat-card komodo has-photo" style="background-image: url('Images/Retreats/komodo-indonesia.jpg'); text-decoration: none;">
         <span class="badge">Indonesia</span>
         <div class="content">
           <h3>Komodo</h3>
@@ -1138,7 +1257,7 @@
           <p class="desc">Sailing the Komodo region. Rugged islands, vast horizons, a setting that invites courage over comfort.</p>
         </div>
       </a>
-      <a href="retreats.html#palawan" class="retreat-card palawan" style="text-decoration: none;">
+      <a href="retreats.html#palawan" class="retreat-card palawan has-photo" style="background-image: url('Images/Retreats/el-nido-palawan.jpg'); text-decoration: none;">
         <span class="badge">Philippines</span>
         <div class="content">
           <h3>El Nido, Palawan</h3>
@@ -1177,9 +1296,9 @@
     <div class="coach-grid">
 
       <article class="coach-card">
-        <div class="coach-photo">
+        <div class="coach-photo has-photo" style="background-image: url('Images/Founder/isa-portrait.jpg');">
           <span class="initial">I</span>
-          <span class="role">Founder</span>
+          <span class="role">Founder &amp; Coach</span>
         </div>
         <div class="coach-info">
           <h4>Isa Buencamino-Agbayani</h4>
@@ -1193,7 +1312,7 @@
       </article>
 
       <article class="coach-card">
-        <div class="coach-photo cool">
+        <div class="coach-photo has-photo" style="background-image: url('Images/Coaches/catherine-ward.jpg');">
           <span class="initial">C</span>
           <span class="role">Coach</span>
         </div>
@@ -1209,7 +1328,7 @@
       </article>
 
       <article class="coach-card">
-        <div class="coach-photo warm">
+        <div class="coach-photo has-photo" style="background-image: url('Images/Coaches/serpil-demirel.jpg');">
           <span class="initial">S</span>
           <span class="role">Coach</span>
         </div>
@@ -1258,22 +1377,6 @@
         </div>
       </article>
 
-      <article class="coach-card">
-        <a href="https://www.linkedin.com/in/ana-m-marques/" target="_blank" rel="noopener" style="display: contents; color: inherit;">
-          <div class="coach-photo cool">
-            <span class="initial">A</span>
-            <span class="role">COO</span>
-          </div>
-          <div class="coach-info">
-            <h4>Ana Marques</h4>
-            <p class="where">Chief Operating Officer · WOW</p>
-            <ul>
-              <li><em style="color: var(--grey-600);">[ Bio from Ana's LinkedIn or wowcoaching.org goes here ]</em></li>
-            </ul>
-          </div>
-        </a>
-      </article>
-
     </div>
 
     <div class="coaches-note">
@@ -1282,6 +1385,14 @@
       </p>
       <a href="http://whatsinsideltd.com/associates" target="_blank" rel="noopener" class="btn btn-outline-teal btn-arrow">View associate coaches</a>
     </div>
+  </div>
+</section>
+
+<!-- ───────── COMMUNITY STRIP ───────── -->
+<section class="community-strip" style="background-image: url('Images/Generic/generic-2.jpg'); padding-top: 0; padding-bottom: 0;">
+  <div class="community-strip-text">
+    <span class="label">The WOW community</span>
+    <h3>"Strangers become sisters &mdash; that's not a tagline, it's what actually happens."</h3>
   </div>
 </section>
 
